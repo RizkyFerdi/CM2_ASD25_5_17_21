@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
 public class MainCM2 {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
-
         Bbm[] arrBbm = new Bbm[4];
         arrBbm[0] = new Bbm("Pertalite", 10000);
         arrBbm[1] = new Bbm("Pertamax", 12400);
@@ -12,7 +11,6 @@ public class MainCM2 {
         Bbm dataBbm = new Bbm();
         AntrianBbm list = new AntrianBbm();
         int pilihan;
-
 
         do {
             System.out.println("\n++++++++++++++++++++++++++++++++");
@@ -31,15 +29,21 @@ public class MainCM2 {
             input.nextLine();
             switch (pilihan) {
                 case 1:
-                    
+                    System.out.print("Input Plat Nomor : ");
+                    String plat = input.nextLine();
+                    System.out.print("Input jenis kendaraan : ");
+                    String tipe = input.nextLine();
+                    System.out.print("Input Merk: ");
+                    String merk = input.nextLine();
+                    Kendaraan transport = new Kendaraan(plat, tipe, merk);
+                    list.AddAntrian(transport);
                     break;
                 case 2:
-
+                    list.printAntrian();
                     break;
                 case 3:
 
                     break;
-
                 case 4:
                     System.out.println("Kendaraan ");
                     System.out.println("Daftar Jenis BBM : ");
@@ -52,8 +56,8 @@ public class MainCM2 {
 
                     break;
                 case 0:
-                    System.out.println("\nTerima Kasih!"); 
-                    break;           
+                    System.out.println("\nTerima Kasih!");
+                    break;
                 default:
                     System.out.println("\nPilihan tidak valid.");
             }

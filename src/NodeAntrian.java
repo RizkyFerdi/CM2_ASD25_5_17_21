@@ -1,11 +1,11 @@
 public class NodeAntrian {
 
- Kendaraan kendaraan;
- NodeAntrian next;
+    Kendaraan kendaraan;
+    NodeAntrian next;
 
- public NodeAntrian(Kendaraan kendaraan, NodeAntrian next) {
-  this.kendaraan = kendaraan;
-  this.next = null;
- }
+    public NodeAntrian(Kendaraan kendaraan, NodeAntrian next) {
+        this.kendaraan = kendaraan;
+        this.next = null;
+    }
 
 }
