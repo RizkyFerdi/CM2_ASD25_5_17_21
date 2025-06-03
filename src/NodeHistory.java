@@ -1,10 +1,10 @@
 public class NodeHistory {
 
-    Kendaraan kendaraan;
+    TransaksiPengisian dataTrs;
     NodeHistory next;
 
-    public NodeHistory(Kendaraan kendaraan, NodeHistory next) {
-        this.kendaraan = kendaraan;
+    public NodeHistory(TransaksiPengisian dataTrs, NodeHistory next) {
+        this.dataTrs = dataTrs;
         this.next = next;
     }
 

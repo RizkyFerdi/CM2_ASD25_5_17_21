@@ -1,41 +1,106 @@
 public class AntrianBbm {
-    NodeAntrian head;
-    NodeAntrian tail;
-    int size;
+ NodeAntrian head1;
+ NodeHistory head2;
+ NodeAntrian tail;
+ TransaksiPengisian transaksiPengisian;
+ int size;
 
-    boolean isEmpty() {
-        return (head == null);
-    }
+ boolean isEmptyAntrian() {
+  return head1 == null;
+ }
 
-    public void AddAntrian(Kendaraan Kendaraan) {
-        NodeAntrian ndInput = new NodeAntrian(Kendaraan, null);
-        if (isEmpty()) {
-            head = ndInput;
-            tail = ndInput;
-            System.out.println(">> Kendaraan Masuk Ke Dalam Antrian");
-            size++;
-        } else {
-            tail.next = ndInput;
-            tail = ndInput;
-            System.out.println(">> Kendaraan Masuk ke Dalam Antrian");
-            size++;
-        }
-    }
+ boolean isEmptyHistory() {
+  return head2 == null;
+ }
 
-    public void printAntrian() {
-        if (!isEmpty()) {
-            NodeAntrian tmp = head;
-            System.out.println("Antrian Kendaraan:\t");
-            System.out.println("Plat\t Tipe\t Merk");
-            System.out.println("-------------------------------------");
-            while (tmp != null) {
-                tmp.kendaraan.tampilInformasi();
-                tmp = tmp.next;
-            }
-            System.out.println("");
-        } else {
-            System.out.println("Antrian Kosong\n");
-        }
-    }
+ public void AddAntrian(Kendaraan Kendaraan) {
+  NodeAntrian ndInput = new NodeAntrian(Kendaraan, null);
+  if (isEmptyAntrian()) {
+   head1 = ndInput;
+
+   tail = ndInput;
+   System.out.println(">> Kendaraan Masuk Ke Dalam Antrian");
+   size++;
+  } else {
+   tail.next = ndInput;
+   tail = ndInput;
+   System.out.println(">> Kendaraan Masuk ke Dalam Antrian");
+   size++;
+  }
+ }
+
+ public void printAntrian() {
+  if (!isEmptyAntrian()) {
+   NodeAntrian tmp = head1;
+   System.out.println("Antrian Kendaraan:\t");
+   System.out.println("Plat\t Tipe\t Merk");
+   System.out.println("-------------------------------------");
+   while (tmp != null) {
+    tmp.kendaraan.tampilInformasi();
+    tmp = tmp.next;
+   }
+   System.out.println("");
+  } else {
+   System.out.println("Antrian Kosong\n");
+  }
+ }
+
+ int cekSisaAntrian() {
+  return size;
+ }
+
+ Kendaraan layaniKendaraan() {
+  if (isEmptyAntrian()) {
+   System.out.println("Antrean kosong, tidak dapat dipanggil!");
+   return null;
+  }
+
+  Kendaraan kendaraanDilayani = head1.kendaraan;
+  head1 = head1.next;
+
+  if (head1 == null) {
+   tail = null;
+  }
+
+  size--;
+  return kendaraanDilayani;
+ }
+
+ void riwayatTransaksi(TransaksiPengisian input) {
+  NodeHistory ndInput = new NodeHistory(input, null);
+  if (isEmptyHistory()) {
+   head2 = ndInput;
+  } else {
+   NodeHistory temp = head2;
+   while (temp.next != null) {
+    temp = temp.next;
+   }
+   temp.next = ndInput;
+  }
+ }
+
+ void tampilRiwayat() {
+  if (isEmptyHistory()) {
+   System.out.println("Riwayat transaksi kosong!");
+   return;
+  } else {
+   NodeHistory temp = head2;
+   System.out.println("Plat \tJenis Kdr \t Jenis BBM \t Total");
+   while (temp != null) {
+    double total = temp.dataTrs.bbm.hargaPerLiter * temp.dataTrs.jumlahLiter;
+    temp.dataTrs.tampilTransaksi(total);
+    temp = temp.next;
+   }
+  }
+ }
+
+ Bbm searchBbm(Bbm[] arrBbm, String input) {
+  for (int i = 0; i < arrBbm.length; i++) {
+   if (arrBbm[i].namaBbm.equalsIgnoreCase(input)) {
+    return arrBbm[i];
+   }
+  }
+  return null;
+ }
 
 }
