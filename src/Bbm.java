@@ -17,8 +17,6 @@ public class Bbm {
         for (Bbm bbm : arrBbm) {
             System.out.println(bbm.namaBbm + "  \t" + bbm.hargaPerLiter);
         }
-        // while (Bbm != null) {
-        // }
     }
 
 }

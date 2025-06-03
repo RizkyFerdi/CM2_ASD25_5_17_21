@@ -5,19 +5,17 @@ public class AntrianBbm {
     TransaksiPengisian transaksiPengisian;
     int size;
 
-    boolean isEmpty() {
-        if (head1 == null) {
-            return true;
-        } else if (head2 == null) {
-            return true;
-        } else {
-            return false;
-        }
+    boolean isEmptyAntrian() {
+        return head1 == null;
+    }
+
+    boolean isEmptyHistory() {
+        return head2 == null;
     }
 
     public void AddAntrian(Kendaraan Kendaraan) {
         NodeAntrian ndInput = new NodeAntrian(Kendaraan, null);
-        if (isEmpty()) {
+        if (isEmptyAntrian()) {
             head1 = ndInput;
 
             tail = ndInput;
@@ -32,10 +30,10 @@ public class AntrianBbm {
     }
 
     public void printAntrian() {
-        if (!isEmpty()) {
+        if (!isEmptyAntrian()) {
             NodeAntrian tmp = head1;
             System.out.println("Antrian Kendaraan:\t");
-            System.out.println("Plat\t Tipe\t Merk");
+            System.out.println("Plat Nomor\tTipe\tMerk");
             System.out.println("-------------------------------------");
             while (tmp != null) {
                 tmp.kendaraan.tampilInformasi();
@@ -52,7 +50,7 @@ public class AntrianBbm {
     }
 
     Kendaraan layaniKendaraan() {
-        if (isEmpty()) {
+        if (isEmptyAntrian()) {
             System.out.println("Antrean kosong, tidak dapat dipanggil!");
             return null;
         }
@@ -70,7 +68,7 @@ public class AntrianBbm {
 
     void riwayatTransaksi(TransaksiPengisian input) {
         NodeHistory ndInput = new NodeHistory(input, null);
-        if (isEmpty()) {
+        if (isEmptyHistory()) {
             head2 = ndInput;
         } else {
             NodeHistory temp = head2;
@@ -82,12 +80,12 @@ public class AntrianBbm {
     }
 
     void tampilRiwayat() {
-        if (isEmpty()) {
+        if (isEmptyHistory()) {
             System.out.println("Riwayat transaksi kosong!");
             return;
         } else {
             NodeHistory temp = head2;
-            System.out.println("Plat \tJenis Kdr \t Jenis BBM \t Total");
+            System.out.println("Plat Nomor \tJenis Kdr \tJenis BBM \tTotal");
             while (temp != null) {
                 double total = temp.dataTrs.bbm.hargaPerLiter * temp.dataTrs.jumlahLiter;
                 temp.dataTrs.tampilTransaksi(total);

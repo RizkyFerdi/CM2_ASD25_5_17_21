@@ -14,6 +14,6 @@ public class TransaksiPengisian {
     }
 
     void tampilTransaksi(double total) {
-        System.out.println(kendaraan.platNomor + " \t" + kendaraan.tipe + " \t" + bbm.namaBbm + " \t" + total);
+        System.out.println(kendaraan.platNomor + " \t" + kendaraan.tipe + " \t\t" + bbm.namaBbm + " \t" + total);
     }
 }

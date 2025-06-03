@@ -43,22 +43,29 @@ public class MainCM2 {
                 case 3:
                     int sisa = list.cekSisaAntrian();
                     System.out.println("Sisa Kendaraan : " + sisa);
-
                     break;
                 case 4:
+                    if (list.head1 == null) {
+                        System.out.println("Data kosong.");
+                        break;
+                    }
                     System.out.println("Kendaraan : " + list.head1.kendaraan.platNomor);
                     System.out.println("Daftar Jenis BBM : ");
                     dataBbm.tampilInformasi(arrBbm);
-                    System.out.print("Input Jenis BBM : ");
-                    String jenisBbm = input.nextLine();
-                    Bbm namaBbm = list.searchBbm(arrBbm, jenisBbm);
-                    if (namaBbm == null) {
+                    Bbm namaBbm;
+                    int liter;
+                    while (true) {
+                        System.out.print("Input Jenis BBM : ");
+                        String jenisBbm = input.nextLine();
+                        namaBbm = list.searchBbm(arrBbm, jenisBbm);
+                        if (namaBbm != null) {
+                            System.out.print("Jumlah Liter : ");
+                            liter = input.nextInt();
+                            break;
+                        }
                         System.out.println("Jenis BBM tidak ditemukan!");
-                        break;
                     }
                     Kendaraan kendaraanDilayani = list.layaniKendaraan();
-                    System.out.print("Jumlah Liter : ");
-                    int liter = input.nextInt();
                     TransaksiPengisian transaksiPengisian = new TransaksiPengisian(kendaraanDilayani, namaBbm, liter);
                     list.riwayatTransaksi(transaksiPengisian);
                     System.out.println("Transaksi Berhasil");
