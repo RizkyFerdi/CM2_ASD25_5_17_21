@@ -4,7 +4,15 @@ public class MainCM2 {
     public static void main(String[] args) throws Exception{
         Scanner input = new Scanner(System.in);
 
+        Bbm[] arrBbm = new Bbm[4];
+        arrBbm[0] = new Bbm("Pertalite", 10000);
+        arrBbm[1] = new Bbm("Pertamax", 12400);
+        arrBbm[2] = new Bbm("Biosolar", 6800);
+        arrBbm[3] = new Bbm("Dexlite", 13400);
+        Bbm dataBbm = new Bbm();
+        AntrianBbm list = new AntrianBbm();
         int pilihan;
+
 
         do {
             System.out.println("\n++++++++++++++++++++++++++++++++");
@@ -33,7 +41,9 @@ public class MainCM2 {
                     break;
 
                 case 4:
-
+                    System.out.println("Kendaraan ");
+                    System.out.println("Daftar Jenis BBM : ");
+                    dataBbm.tampilInformasi(arrBbm);
                     break;
                 case 5:
 
