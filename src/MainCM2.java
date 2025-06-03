@@ -67,7 +67,9 @@ public class MainCM2 {
                     list.tampilRiwayat();
                     break;
                 case 6:
-
+                    list.sortByPlat();
+                    System.out.println("-- Pengurutan Riwayat Transaksi --");
+                    list.tampilRiwayat();
                     break;
                 case 0:
                     System.out.println("\nTerima Kasih!");
